@@ -1,0 +1,17 @@
+{
+    "name": "EnoxSoftware.DlibFaceLandmarkDetector.Editor",
+    "references": [
+        "GUID:7166fda719c99694d9297ead935e2a9d"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

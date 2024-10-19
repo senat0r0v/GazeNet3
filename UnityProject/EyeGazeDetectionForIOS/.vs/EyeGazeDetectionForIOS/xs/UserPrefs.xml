@@ -1,0 +1,27 @@
+﻿<Properties StartupConfiguration="{2D228A01-430E-E529-FFD9-116037BFE53F}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/IOSGazeController.cs">
+    <Files>
+      <File FileName="Assets/Scripts/IOSGazeController.cs" Line="254" Column="23" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="EyeGazeDetectionForIOS" expanded="True">
+            <Node name="Assets" expanded="True">
+              <Node name="Scripts" expanded="True">
+                <Node name="IOSGazeController.cs" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="9001536c-93d2-4840-9872-0fe598d0bff0" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

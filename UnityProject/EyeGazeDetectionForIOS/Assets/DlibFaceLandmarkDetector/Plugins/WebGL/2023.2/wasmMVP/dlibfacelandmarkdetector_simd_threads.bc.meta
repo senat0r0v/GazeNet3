@@ -1,0 +1,32 @@
+fileFormatVersion: 2
+guid: dcdacb60a8131694e8710d60b3803042
+PluginImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  iconMap: {}
+  executionOrder: {}
+  defineConstraints: []
+  isPreloaded: 0
+  isOverridable: 0
+  isExplicitlyReferenced: 0
+  validateReferences: 1
+  platformData:
+  - first:
+      Any: 
+    second:
+      enabled: 0
+      settings: {}
+  - first:
+      Editor: Editor
+    second:
+      enabled: 0
+      settings:
+        DefaultValueInitialized: true
+  - first:
+      WebGL: WebGL
+    second:
+      enabled: 0
+      settings: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

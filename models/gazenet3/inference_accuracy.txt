@@ -1,0 +1,5 @@
+Accuracy per class:
+Up: 0.0%
+Down: 100.0%
+Center: 40.0%
+Overall Accuracy: 46.7%

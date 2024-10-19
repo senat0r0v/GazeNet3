@@ -1,10 +1,14 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\rober\\Desktop\\EyeGazeDetectionForIOS\\",
+  "WorkspaceRootPath": "C:\\Users\\rober\\Desktop\\Repos\\GazeNet3\\UnityProject\\EyeGazeDetectionForIOS\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{2D228A01-430E-E529-FFD9-116037BFE53F}|Assembly-CSharp.csproj|c:\\users\\rober\\desktop\\eyegazedetectionforios\\assets\\scripts\\iosgazecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{2D228A01-430E-E529-FFD9-116037BFE53F}|Assembly-CSharp.csproj|c:\\users\\rober\\desktop\\repos\\gazenet3\\unityproject\\eyegazedetectionforios\\assets\\scripts\\iosgazecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2D228A01-430E-E529-FFD9-116037BFE53F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\iosgazecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2D228A01-430E-E529-FFD9-116037BFE53F}|Assembly-CSharp.csproj|c:\\users\\rober\\desktop\\repos\\gazenet3\\unityproject\\eyegazedetectionforios\\assets\\scripts\\gridcolorassigner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2D228A01-430E-E529-FFD9-116037BFE53F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\gridcolorassigner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,17 +18,30 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "GridColorAssigner.cs",
+              "DocumentMoniker": "C:\\Users\\rober\\Desktop\\Repos\\GazeNet3\\UnityProject\\EyeGazeDetectionForIOS\\Assets\\Scripts\\GridColorAssigner.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\GridColorAssigner.cs",
+              "ToolTip": "C:\\Users\\rober\\Desktop\\Repos\\GazeNet3\\UnityProject\\EyeGazeDetectionForIOS\\Assets\\Scripts\\GridColorAssigner.cs",
+              "RelativeToolTip": "Assets\\Scripts\\GridColorAssigner.cs",
+              "ViewState": "AgIAABwBAAAAAAAAAAAAwCoBAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-19T22:12:21.368Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "IOSGazeController.cs",
-              "DocumentMoniker": "C:\\Users\\rober\\Desktop\\EyeGazeDetectionForIOS\\Assets\\Scripts\\IOSGazeController.cs",
+              "DocumentMoniker": "C:\\Users\\rober\\Desktop\\Repos\\GazeNet3\\UnityProject\\EyeGazeDetectionForIOS\\Assets\\Scripts\\IOSGazeController.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\IOSGazeController.cs",
-              "ToolTip": "C:\\Users\\rober\\Desktop\\EyeGazeDetectionForIOS\\Assets\\Scripts\\IOSGazeController.cs",
+              "ToolTip": "C:\\Users\\rober\\Desktop\\Repos\\GazeNet3\\UnityProject\\EyeGazeDetectionForIOS\\Assets\\Scripts\\IOSGazeController.cs",
               "RelativeToolTip": "Assets\\Scripts\\IOSGazeController.cs",
-              "ViewState": "AgIAAFEEAAAAAAAAAAAmwHUEAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAHUEAAAAAAAAAAAAAHUEAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-18T04:55:48.14Z",
               "EditorCaption": ""

@@ -148,6 +148,8 @@ Usage:
  - Used to collect natural eye images labeled with gaze direction, contributing to the natural dataset.
  - Collaborators: The natural dataset was gathered with the help of fellow students using this script.
 
+![image](https://github.com/user-attachments/assets/6881415e-cf7d-4636-b2c1-91515aa5a05a)
+
 ##### IOSGazeController.cs
 Purpose: Handles live gaze direction prediction by processing camera input, extracting eye regions, and utilizing trained models to determine gaze direction in real-time.
 

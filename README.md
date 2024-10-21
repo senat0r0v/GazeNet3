@@ -17,10 +17,19 @@ Welcome to GazeNet3, a comprehensive project dedicated to developing, training, 
 7. Unity Integration
    - GridColorAssigner.cs
    - IOSGazeController.cs
-8. GazeNet3 Explanation
-9. Collaborators and Acknowledgments
-10. Summary and Future Work
-11. License
+8. Deep Dive: How GazeNet3 Learns
+   - Overview of GazeNet3 Architecture
+   - Input Layer
+   - Initial Convolutional Block
+   - Residual Blocks
+   - Adaptive Average Pooling
+   - Fully Connected Layer (Classification Head)
+   - Learning Process
+   - How GazeNet3 Handles the Dataset
+   - Why This Architecture?
+10. Collaborators and Acknowledgments
+11. Summary and Future Work
+12. License
 
 ## Introduction
 GazeNet3 aims to create robust neural network models capable of predicting gaze direction with high accuracy. By leveraging both synthetic and natural datasets, the project trains various architectures to generalize well to real-world scenarios. Integration with Unity allows for real-time gaze prediction, enhancing applications in user interaction, accessibility, and more.
@@ -180,6 +189,70 @@ Usage:
 
 Bugs:
 - Currently 3 grid setup for Down and Center are reverse but you can see the prediction in the logs on the GIF.
+
+## Deep Dive: How GazeNet3 Learns
+The GazeNet3 model is a custom convolutional neural network (CNN) architecture designed for the task of gaze estimation, specifically categorizing eye gaze into three classes: Up, Down, and Center. Its architecture integrates principles from residual learning, regularization, and transfer learning to ensure robust performance. Below, we break down the architecture, layer by layer, explaining the role and function of each component:
+
+Overview of GazeNet3 Architecture
+GazeNet3 is built upon a convolutional neural network framework that progressively extracts features from the input images and classifies the gaze direction. It uses residual blocks, dropout, and normalization to enhance the network’s ability to learn complex patterns while reducing overfitting.
+
+1. Input Layer
+   - Input Dimensions: (3, 224, 224) — GazeNet3 accepts input images resized to 224x224 pixels with three color channels (RGB). This standard size is used across many image classification models and allows the model to balance between computational efficiency and retaining visual details.
+
+2. Initial Convolutional Block
+   - Convolution Layer: 7x7 kernel, 64 filters, stride=2, padding=3
+     - The initial convolution extracts low-level features such as edges, textures, and colors from the input image.
+   - Batch Normalization: Standardizes the outputs, which helps in stabilizing and accelerating training.
+   - ReLU Activation: Adds non-linearity, allowing the model to learn complex patterns.
+   - Dropout: 0.2 — Helps prevent overfitting by randomly setting a portion of the outputs to zero.
+   - Max Pooling: 3x3 kernel, stride=2, padding=1 — Reduces the spatial dimensions, retaining important features while decreasing computational load.  
+
+3. Residual Blocks
+   - Why Residual Blocks?: Residual blocks introduce skip connections, allowing the gradient to flow through the network during backpropagation without vanishing. This structure makes it easier for the network to learn deep representations, as it helps the model retain important features across layers.
+   - Residual Block Structure:
+     - Each block contains:
+       - Two Convolutional Layers: 3x3 kernel, same number of filters, with Batch Normalization and ReLU activation.
+       - Dropout: 0.2 — Applied after each convolution to regularize the network.
+       - Skip Connection: Adds the input of the block directly to its output, helping retain the learned features.
+     - Downsampling: Applied in the first block of each layer set when the output dimensions need to be reduced, using 1x1 convolutions and stride=2.
+   - Layer Composition:
+     - Layer 1: 2 residual blocks, 64 filters
+     - Layer 2: 2 residual blocks, 128 filters, downsampling included.
+     - Layer 3: 2 residual blocks, 256 filters, downsampling included.
+     - Layer 4: 2 residual blocks, 512 filters, downsampling included.
+     - As the model progresses through these layers, it captures increasingly abstract and complex features about the eye's appearance and positioning.
+    
+4. Adaptive Average Pooling
+   - Purpose: Reduces the spatial dimensions to (1, 1) while retaining the spatial structure of features, making the model less sensitive to input size variations.
+   - Output: A feature vector of length 512, representing the distilled information from the input image.
+
+5. Fully Connected Layer (Classification Head)
+   - Dropout: 0.5 — A higher dropout rate to further mitigate overfitting in the final stages of learning.
+   - Linear Layer: Maps the 512-dimensional vector to 3 output neurons (one for each class: Up, Down, Center).
+   - Softmax Activation: Applied during inference to convert the output logits into probabilities, determining the likelihood of each class.
+
+Learning Process
+ - Training Loss: Uses Cross-Entropy Loss with label smoothing=0.1, which slightly relaxes the confidence in the correct class labels. This technique helps in preventing overconfidence in predictions and improving the model’s generalization.
+ - Optimization: The optimizer used is AdamW (an improved version of Adam with weight decay). It adjusts the learning rates for each parameter dynamically, while weight decay helps in preventing overfitting by penalizing large weights.
+ - Learning Rate: 0.000001 — A very low learning rate to ensure stable convergence, particularly because the network is trained with a mixed dataset of synthetic and natural images.
+ - Mixed Precision Training: Automatic Mixed Precision (AMP) is used to speed up training by reducing memory usage through the autocast feature, allowing some operations to run in half-precision while maintaining model accuracy.
+
+How GazeNet3 Handles the Dataset
+ - Training Data: Uses a combination of synthetic and real-world images:
+   - Synthetic images simulate diverse eye orientations with augmentation to enhance variability.
+   - Natural images are enhanced through transformations to better simulate real-world lighting and variations.
+ - Augmentation Techniques:
+   - For synthetic images: Includes resizing, Gaussian blur, and random resizing to simulate different distances.
+   - For natural images: Uses ColorJitter, RandomAffine, and slight blurring to simulate realistic variations in appearance.
+ - Evaluation: During testing, the model's ability to generalize is tested on a combination of unseen synthetic and real-world images.
+
+Why This Architecture?
+ - Residual Learning allows GazeNet3 to learn deeper representations without the risk of vanishing gradients, crucial for understanding the complex variations in eye shapes and positions.
+ - Augmentation Strategy ensures that the model is exposed to a wide range of visual appearances, improving its robustness when dealing with new, unseen data.
+ - Dropout and Label Smoothing are critical for ensuring that the model does not overfit to the training data, providing a smoother decision boundary for better generalization in real-world scenarios.
+ - Adaptive Average Pooling and Mixed Precision Training help to optimize the model for deployment scenarios with varying input sizes and hardware limitations.
+
+In essence, GazeNet3 combines classic CNN principles with modern deep learning techniques, making it capable of capturing the nuances of eye movements for gaze estimation in both controlled and in-the-wild scenarios. Its architecture balances complexity with generalization, allowing it to be a versatile model for diverse datasets.
 
 ## Collaborators and Acknowledgments
 This project was made possible with the support and contributions of several individuals:

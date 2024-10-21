@@ -41,3 +41,37 @@ The synthetic dataset is used to train and evaluate models on controlled, consis
  - Usage: Provides a foundation for models to learn basic gaze direction features.
 
 ### Natural Dataset
+The natural dataset captures real-world variations to improve model generalization.
+ - Location: GazeNet3/natural_dataset/
+ - Structure:
+   - train/: Contains natural eye images for training.
+   - test/: Contains natural eye images for testing.
+ - Approximately 1,000 images in total for both training and testing.
+ - Naming Convention: Images are named with a unique 8-character alphanumeric ID followed by the class label (e.g., eyes_0AQVX3JG_Down.jpg).
+ - Usage: Enhances models' ability to generalize to diverse, real-world conditions.
+
+### Real Eyes for Testing
+This dataset is used exclusively for evaluating the inference performance of trained models on unseen real-eye images.
+ - Location: GazeNet3/dataset/real_eyes_for_testing/
+ - Structure:
+   - Contains 10 images per class (Center, Down, Up).
+ - Usage: Provides a benchmark to assess how well models perform on completely new data.
+
+### UnityEyes Software
+To generate the synthetic dataset, we utilized UnityEyes, a tool for rapidly synthesizing large amounts of variable eye region images for training data.
+
+Summary of UnityEyes:
+UnityEyes is a novel method that allows for the rapid synthesis of large volumes of eye region images with high variability. It combines a generative 3D model of the human eye region with a real-time rendering framework. The key features include:
+ - Realistic Eye Region Modeling: Based on high-resolution 3D face scans, the model accurately represents the human eye region.
+ - Anatomically Inspired Animations: Procedural geometry methods simulate realistic eyelid movements.
+ - Complex Material Approximation: Real-time approximations for eyeball materials and structures enhance realism.
+ - Gaze Variation: Capable of synthesizing images with a wide range of head poses and gaze angles, including extreme cases.
+UnityEyes has proven effective for gaze estimation in challenging scenarios, even when the pupil is fully occluded. It enables the creation of diverse training datasets without the need for labor-intensive data collection and labeling.
+
+Official Link: https://www.cl.cam.ac.uk/research/rainbow/projects/unityeyes/
+Authors: Erroll Wood, Tadas Baltrušaitis, Louis-Philippe Morency, Peter Robinson, and Andreas Bulling
+
+
+
+
+

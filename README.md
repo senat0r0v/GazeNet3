@@ -173,6 +173,9 @@ Usage:
 
 ![Animation](https://github.com/user-attachments/assets/59033247-3528-409a-8bda-7bae04821d5b)
 
+Bugs:
+- Currently 3 grid setup for Down and Center are reverse but you can see the prediction in the logs on the GIF.
+
 ## Collaborators and Acknowledgments
 This project was made possible with the support and contributions of several individuals:
  - Collaborators: Max Choi, Sebastian Garcia, Alex Gulewich, Alisa Ho, Xav Laugo, Preetham Mukundan, Spencer Paynter-Repay, Levi Spevakow, and Henry Williams

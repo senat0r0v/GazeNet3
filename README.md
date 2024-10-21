@@ -72,7 +72,7 @@ This dataset is used exclusively for evaluating the inference performance of tra
 ### UnityEyes Software
 To generate the synthetic dataset, we utilized UnityEyes, a tool for rapidly synthesizing large amounts of variable eye region images for training data.
 
-Summary of UnityEyes:
+### Summary of UnityEyes:
 UnityEyes is a novel method that allows for the rapid synthesis of large volumes of eye region images with high variability. It combines a generative 3D model of the human eye region with a real-time rendering framework. The key features include:
  - Realistic Eye Region Modeling: Based on high-resolution 3D face scans, the model accurately represents the human eye region.
  - Anatomically Inspired Animations: Procedural geometry methods simulate realistic eyelid movements.
@@ -90,7 +90,7 @@ Authors: Erroll Wood, Tadas Baltrušaitis, Louis-Philippe Morency, Peter Robinso
 ## Training Scripts
 The trainers directory contains Python scripts for training different neural network architectures on specified datasets.
 
-Overview of Training Scripts:
+### Overview of Training Scripts:
 1. AlexNet Trainers:
    - alexnet_trainer_synthetic.py: Trains AlexNet on the synthetic dataset.
    - mixed_alexnet_trainer.py: Trains AlexNet on a mixed dataset (synthetic + natural).
@@ -104,7 +104,7 @@ Overview of Training Scripts:
    - resnet_trainer_synthetic.py: Trains ResNet-152 on the synthetic dataset.
    - natural_resnet_trainer.py: Fine-tunes ResNet-152 on the natural dataset.
 
-Common Features Across Scripts:
+### Common Features Across Scripts:
  - Data Loading:
    - Utilizes PyTorch's ImageFolder and DataLoader for efficient data handling.
    - Applies necessary transformations like resizing, normalization, and augmentation.
@@ -134,7 +134,7 @@ The performance of each trained model was evaluated on the real_eyes_for_testing
 | natural_resnet        | 0.0    | 0.0      | 100.0      | 33.3                 |
 | resnet                | 0.0    | 100.0    | 0.0        | 33.3                 |
 
-Observations:
+### Observations:
  - Mixed AlexNet achieved the highest overall accuracy at 50.0%, indicating better generalization by leveraging both synthetic and natural datasets.
  - Models trained exclusively on natural data performed better on the Center class.
  - The Down class consistently showed high accuracy across most models, suggesting that downward gaze is easier for models to predict accurately.
@@ -145,7 +145,7 @@ The Unity project includes scripts for data collection and real-time gaze predic
 ##### GridColorAssigner.cs
 Purpose: Manages the visualization grid within the Unity scene, handles user interactions (cube taps), and facilitates the capture of eye images for the natural dataset.
 
-Key Functionalities:
+### Key Functionalities:
  - Grid Generation:
    - Creates a grid of colored cubes representing different gaze regions.
    - Assigns colors based on spatial regions to indicate gaze directions.
@@ -156,7 +156,7 @@ Key Functionalities:
    - Captures a photo of the user's eye using the device's camera upon cube tap.
    - Saves the captured image with a unique filename indicating the region.
 
-Usage:
+### Usage:
  - Used to collect natural eye images labeled with gaze direction, contributing to the natural dataset.
  - Collaborators: The natural dataset was gathered with the help of fellow students using this script.
 
@@ -165,7 +165,7 @@ Usage:
 ##### IOSGazeController.cs
 Purpose: Handles live gaze direction prediction by processing camera input, extracting eye regions, and utilizing trained models to determine gaze direction in real-time.
 
-Key Functionalities:
+### Key Functionalities:
  - Camera Handling:
    - Accesses the device's front-facing camera with optimized resolution settings.
    - Ensures proper camera permissions and initialization.
@@ -182,7 +182,7 @@ Key Functionalities:
    - Updates the grid to reflect the predicted gaze direction.
    - Displays the extracted eye image and logs for user feedback.
 
-Usage:
+### Usage:
  - Implements real-time gaze prediction in the Unity application, enabling interactive experiences based on user's gaze.
 
 ![Animation](https://github.com/user-attachments/assets/59033247-3528-409a-8bda-7bae04821d5b)
@@ -193,13 +193,13 @@ Bugs:
 ## Deep Dive: How GazeNet3 Learns
 The GazeNet3 model is a custom convolutional neural network (CNN) architecture designed for the task of gaze estimation, specifically categorizing eye gaze into three classes: Up, Down, and Center. Its architecture integrates principles from residual learning, regularization, and transfer learning to ensure robust performance. Below, we break down the architecture, layer by layer, explaining the role and function of each component:
 
-Overview of GazeNet3 Architecture
+### Overview of GazeNet3 Architecture
 GazeNet3 is built upon a convolutional neural network framework that progressively extracts features from the input images and classifies the gaze direction. It uses residual blocks, dropout, and normalization to enhance the network’s ability to learn complex patterns while reducing overfitting.
 
-1. Input Layer
+### 1. Input Layer
    - Input Dimensions: (3, 224, 224) — GazeNet3 accepts input images resized to 224x224 pixels with three color channels (RGB). This standard size is used across many image classification models and allows the model to balance between computational efficiency and retaining visual details.
 
-2. Initial Convolutional Block
+### 2. Initial Convolutional Block
    - Convolution Layer: 7x7 kernel, 64 filters, stride=2, padding=3
      - The initial convolution extracts low-level features such as edges, textures, and colors from the input image.
    - Batch Normalization: Standardizes the outputs, which helps in stabilizing and accelerating training.
@@ -207,7 +207,7 @@ GazeNet3 is built upon a convolutional neural network framework that progressive
    - Dropout: 0.2 — Helps prevent overfitting by randomly setting a portion of the outputs to zero.
    - Max Pooling: 3x3 kernel, stride=2, padding=1 — Reduces the spatial dimensions, retaining important features while decreasing computational load.  
 
-3. Residual Blocks
+### 3. Residual Blocks
    - Why Residual Blocks?: Residual blocks introduce skip connections, allowing the gradient to flow through the network during backpropagation without vanishing. This structure makes it easier for the network to learn deep representations, as it helps the model retain important features across layers.
    - Residual Block Structure:
      - Each block contains:
@@ -222,22 +222,22 @@ GazeNet3 is built upon a convolutional neural network framework that progressive
      - Layer 4: 2 residual blocks, 512 filters, downsampling included.
      - As the model progresses through these layers, it captures increasingly abstract and complex features about the eye's appearance and positioning.
     
-4. Adaptive Average Pooling
+### 4. Adaptive Average Pooling
    - Purpose: Reduces the spatial dimensions to (1, 1) while retaining the spatial structure of features, making the model less sensitive to input size variations.
    - Output: A feature vector of length 512, representing the distilled information from the input image.
 
-5. Fully Connected Layer (Classification Head)
+### 5. Fully Connected Layer (Classification Head)
    - Dropout: 0.5 — A higher dropout rate to further mitigate overfitting in the final stages of learning.
    - Linear Layer: Maps the 512-dimensional vector to 3 output neurons (one for each class: Up, Down, Center).
    - Softmax Activation: Applied during inference to convert the output logits into probabilities, determining the likelihood of each class.
 
-Learning Process
+###Learning Process
  - Training Loss: Uses Cross-Entropy Loss with label smoothing=0.1, which slightly relaxes the confidence in the correct class labels. This technique helps in preventing overconfidence in predictions and improving the model’s generalization.
  - Optimization: The optimizer used is AdamW (an improved version of Adam with weight decay). It adjusts the learning rates for each parameter dynamically, while weight decay helps in preventing overfitting by penalizing large weights.
  - Learning Rate: 0.000001 — A very low learning rate to ensure stable convergence, particularly because the network is trained with a mixed dataset of synthetic and natural images.
  - Mixed Precision Training: Automatic Mixed Precision (AMP) is used to speed up training by reducing memory usage through the autocast feature, allowing some operations to run in half-precision while maintaining model accuracy.
 
-How GazeNet3 Handles the Dataset
+### How GazeNet3 Handles the Dataset
  - Training Data: Uses a combination of synthetic and real-world images:
    - Synthetic images simulate diverse eye orientations with augmentation to enhance variability.
    - Natural images are enhanced through transformations to better simulate real-world lighting and variations.
@@ -246,7 +246,7 @@ How GazeNet3 Handles the Dataset
    - For natural images: Uses ColorJitter, RandomAffine, and slight blurring to simulate realistic variations in appearance.
  - Evaluation: During testing, the model's ability to generalize is tested on a combination of unseen synthetic and real-world images.
 
-Why This Architecture?
+### Why This Architecture?
  - Residual Learning allows GazeNet3 to learn deeper representations without the risk of vanishing gradients, crucial for understanding the complex variations in eye shapes and positions.
  - Augmentation Strategy ensures that the model is exposed to a wide range of visual appearances, improving its robustness when dealing with new, unseen data.
  - Dropout and Label Smoothing are critical for ensuring that the model does not overfit to the training data, providing a smoother decision boundary for better generalization in real-world scenarios.
@@ -265,14 +265,14 @@ These collaborators were students in Mobile Development 4 at Vancouver Film Scho
 Amir was an incredible instructor and mentor who guided me through this project, offering insights and encouragement that were instrumental in its success.
 
 ## Summary and Future Work
-Achievements:
+### Achievements:
  - Developed multiple models with varying architectures trained on synthetic, natural, and mixed datasets.
  - Integrated models into Unity for real-time gaze prediction.
  - Achieved the highest overall accuracy with the Mixed AlexNet model.
  - Utilized UnityEyes software to generate a diverse synthetic dataset.
  - Gathered a natural dataset with the help of collaborators, enhancing the models' real-world applicability.
 
-Recommendations for Future Enhancements:
+### Recommendations for Future Enhancements:
 1. Enhanced Data Collection:
    - Collect pictures in the millions using an interactive approach, such as a game that encourages user participation.
    - Implement cloud-based storage for efficient data gathering and management.
@@ -291,7 +291,7 @@ Recommendations for Future Enhancements:
 7. Cross-Validation:
    - Implement k-fold cross-validation to assess model generalization more robustly.
 
-Future Work:
+### Future Work:
  - Performance Optimization:
    - Optimize Unity scripts and model inference for better real-time performance on various devices.
  - User Interface Improvements:

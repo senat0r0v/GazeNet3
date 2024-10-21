@@ -36,6 +36,7 @@ GazeNet3 encompasses the following key components:
 The synthetic dataset is used to train and evaluate models on controlled, consistent data to establish baseline performances.
 
 Location: GazeNet3/dataset/
+
 Structure:
 train/: Contains synthetic images for training, categorized into Center, Down, and Up.
 test/: Contains synthetic images for testing, similarly categorized.

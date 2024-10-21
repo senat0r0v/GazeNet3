@@ -231,7 +231,7 @@ GazeNet3 is built upon a convolutional neural network framework that progressive
    - Linear Layer: Maps the 512-dimensional vector to 3 output neurons (one for each class: Up, Down, Center).
    - Softmax Activation: Applied during inference to convert the output logits into probabilities, determining the likelihood of each class.
 
-###Learning Process
+### Learning Process
  - Training Loss: Uses Cross-Entropy Loss with label smoothing=0.1, which slightly relaxes the confidence in the correct class labels. This technique helps in preventing overconfidence in predictions and improving the model’s generalization.
  - Optimization: The optimizer used is AdamW (an improved version of Adam with weight decay). It adjusts the learning rates for each parameter dynamically, while weight decay helps in preventing overfitting by penalizing large weights.
  - Learning Rate: 0.000001 — A very low learning rate to ensure stable convergence, particularly because the network is trained with a mixed dataset of synthetic and natural images.

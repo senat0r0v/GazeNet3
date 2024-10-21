@@ -1,5 +1,5 @@
 # GazeNet3: Robust Gaze Direction Prediction
-Welcome to GazeNet3, a comprehensive project dedicated to developing, training, and deploying neural network models for accurate gaze direction prediction. This README provides an overview of the project's structure, datasets, training scripts, model performances, Unity integration for real-time gaze detection, and acknowledges the contributions of collaborators.
+Welcome to GazeNet3, a comprehensive project dedicated to developing, training, and deploying neural network models for accurate gaze direction prediction. This README provides an overview of the project's structure, datasets, training scripts, model performances, Unity integration for real-time gaze detection.
 
 ![inference_results](https://github.com/user-attachments/assets/65d494f4-ae8b-4009-97fd-3181e041ca08)
 
@@ -20,3 +20,13 @@ Welcome to GazeNet3, a comprehensive project dedicated to developing, training, 
 8. Collaborators and Acknowledgments
 9. Summary and Future Work
 10. License
+
+## Introduction
+GazeNet3 aims to create robust neural network models capable of predicting gaze direction with high accuracy. By leveraging both synthetic and natural datasets, the project trains various architectures to generalize well to real-world scenarios. Integration with Unity allows for real-time gaze prediction, enhancing applications in user interaction, accessibility, and more.
+
+## Project Overview
+GazeNet3 encompasses the following key components:
+ - Datasets: A combination of synthetic and natural eye images labeled with gaze directions (Up, Down, Center).
+ - Training Scripts: Python scripts for training different neural network architectures, including AlexNet, GazeNet3, MobileNetV2, and ResNet-152.
+ - Models: Trained models saved in both PyTorch (.pth) and ONNX (.onnx) formats for flexibility in deployment.
+ - Unity Integration: Scripts to collect natural eye images and implement real-time gaze prediction within a Unity application.

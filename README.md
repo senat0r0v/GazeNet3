@@ -30,3 +30,13 @@ GazeNet3 encompasses the following key components:
  - Training Scripts: Python scripts for training different neural network architectures, including AlexNet, GazeNet3, MobileNetV2, and ResNet-152.
  - Models: Trained models saved in both PyTorch (.pth) and ONNX (.onnx) formats for flexibility in deployment.
  - Unity Integration: Scripts to collect natural eye images and implement real-time gaze prediction within a Unity application.
+
+## Datasets
+### Synthetic Dataset
+The synthetic dataset is used to train and evaluate models on controlled, consistent data to establish baseline performances.
+
+Location: GazeNet3/dataset/
+Structure:
+train/: Contains synthetic images for training, categorized into Center, Down, and Up.
+test/: Contains synthetic images for testing, similarly categorized.
+Usage: Provides a foundation for models to learn basic gaze direction features.

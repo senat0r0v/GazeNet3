@@ -24,6 +24,8 @@ Welcome to GazeNet3, a comprehensive project dedicated to developing, training, 
 ## Introduction
 GazeNet3 aims to create robust neural network models capable of predicting gaze direction with high accuracy. By leveraging both synthetic and natural datasets, the project trains various architectures to generalize well to real-world scenarios. Integration with Unity allows for real-time gaze prediction, enhancing applications in user interaction, accessibility, and more.
 
+![image](https://github.com/user-attachments/assets/49c7772e-1a8b-4e1d-9d04-2173bc1fcb51)
+
 ## Project Overview
 GazeNet3 encompasses the following key components:
  - Datasets: A combination of synthetic and natural eye images labeled with gaze directions (Up, Down, Center).

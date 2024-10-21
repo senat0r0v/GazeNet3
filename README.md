@@ -17,9 +17,10 @@ Welcome to GazeNet3, a comprehensive project dedicated to developing, training, 
 7. Unity Integration
    - GridColorAssigner.cs
    - IOSGazeController.cs
-8. Collaborators and Acknowledgments
-9. Summary and Future Work
-10. License
+8. GazeNet3 Explanation
+9. Collaborators and Acknowledgments
+10. Summary and Future Work
+11. License
 
 ## Introduction
 GazeNet3 aims to create robust neural network models capable of predicting gaze direction with high accuracy. By leveraging both synthetic and natural datasets, the project trains various architectures to generalize well to real-world scenarios. Integration with Unity allows for real-time gaze prediction, enhancing applications in user interaction, accessibility, and more.
